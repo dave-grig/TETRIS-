@@ -1,3 +1,7 @@
+// press ESCAPE key for pause
+// if you gain more than other recorders your record will be published
+// rows and cells size can be changed just dont put less than 5 rows and cells
+
 // game menu buttons
 let startBtn = document.querySelector("#start_btn");
 let resumeBtn = document.querySelector("#resume_btn");
