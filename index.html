@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="#">
+</head>
+<body>
+   <div id="tetris" class="tetris">
+       <div class="container my-container">
+            <div class="row my-row justify-content-center">
+                <div class="my-col-3">
+                    <div  class="tetris__context context shadow-big">
+                        <div id="start_menu" class="context__menu start-menu">
+                            <h2 class="context__menu-item context__menu-title">TETRIS</h2>
+                            <button id="start_btn" class="context-menu__item start-menu__btn context__menu-btn">Start Game</button>
+                                                            <h3 class="records-list__title">Records</h3>
+                                <ul class="records__list">
+                                    <li class="records-list__item">
+                                        <span class="records-list__recorder">
+                                            Vaxo
+                                        </span>
+                                        <span class="records-list__records">5000</span>
+                                    </li>
+                                    <li class="records-list__item">
+                                        <span class="records-list__recorder">
+                                            Gago
+                                        </span> 
+                                        <span class="records-list__records">4000</span>
+                                    </li>
+                                    <li class="records-list__item">
+                                        <span class="records-list__recorder">
+                                            Lilo
+                                        </span>
+                                        <span class="records-list__records">3000</span>
+                                    </li>
+                                    <li class="records-list__item">
+                                        <span class="records-list__recorder">
+                                            Haso
+                                        </span>
+                                        <span class="records-list__records">2000</span>
+                                    </li>
+                                    <li class="records-list__item">
+                                        <span class="records-list__recorder">
+                                            Davo
+                                        </span>
+                                        <span class="records-list__records">1000</span>
+                                    </li>
+                                </ul>
+                        </div>
+                        <div id="pause_menu" class="context__menu pause-menu my-d-none">
+                            <h2 class="context__menu-title">TETRIS</h2>
+                            <button id="resume_btn" class="context__menu-item pause-menu__btn context__menu-btn pause-menu__btn--resume">Resume Game</button>
+                            <button id="restart_btn"  class="context__menu-item context__menu-btn pause-menu__btn">Restart Game</button>
+                        </div>
+                        <div id="gameover_menu" class="game-over__menu context__menu my-d-none">
+                            <h2 class="context-menu__item context__menu-title game-over__menu-title">TETRIS</h2>
+                            <h3 class="context-menu__item game-over__menu-game-over-text">Game Over</h3>
+                            <div id="new_record" class="new-record my-invisible">
+                                <h2 class="new-record__title">NEW RECORD</h2>
+                                <span class="new-record__score-text"></span>
+                                <input id="new_record_name" class="new-record__input" type="text" placeholder="Enter your name">
+                            </div>
+                            <ul class="records__list">
+                                <li class="context-menu__item records-list__item rec-list-item">
+                                    <span class="records-list__recorder">
+                                        Vaxo
+                                    </span>
+                                    <span class="records-list__records">5000</span>
+                                </li>
+                                <li class="records-list__item rec-list-item rec-list-item">
+                                    <span class="records-list__recorder">
+                                        Gago
+                                    </span> 
+                                    <span class="records-list__records">4000</span>
+                                </li>
+                                <li class="records-list__item rec-list-item">
+                                    <span class="records-list__recorder">
+                                        Lilo
+                                    </span>
+                                    <span class="records-list__records">3000</span>
+                                </li>
+                                <li class="records-list__item rec-list-item">
+                                    <span class="records-list__recorder">
+                                        Haso
+                                    </span>
+                                    <span class="records-list__records">2000</span>
+                                </li>
+                                <li class="records-list__item rec-list-item">
+                                    <span class="records-list__recorder">
+                                        Davo
+                                    </span>
+                                    <span class="records-list__records">1000</span>
+                                </li>
+                            </ul>
+                            
+                            <button id="restart_btn2" class="context__menu-btn gameover__menu-btn">Restart Game</button>
+                        
+                        </div>
+
+                        <div id="board" class="tetris__board my-d-none"></div>
+                        
+                    </div>
+                </div>
+                
+                <div id="tetris_info" class="tetris__info shadow-big">
+                    <div class="tetris__info-sounds-wrapper">
+                        <a id="sound_disable" href="#" class="tetris__info-volume--disable">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ff2400" class="bi bi-volume-up-fill" viewBox="0 0 16 16">
+                                <path d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/>
+                                <path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"/>
+                                <path d="M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8 3.49 3.49 0 0 1 8 10.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"/>
+                              </svg>
+                        </a>
+                        <a id="sound_enable" href="#" class="tetris__info-volume--enable my-d-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="deepskyblue" class="bi bi-volume-up" viewBox="0 0 16 16">
+                                <path d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/>
+                                <path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"/>
+                                <path d="M10.025 8a4.486 4.486 0 0 1-1.318 3.182L8 10.475A3.489 3.489 0 0 0 9.025 8c0-.966-.392-1.841-1.025-2.475l.707-.707A4.486 4.486 0 0 1 10.025 8zM7 4a.5.5 0 0 0-.812-.39L3.825 5.5H1.5A.5.5 0 0 0 1 6v4a.5.5 0 0 0 .5.5h2.325l2.363 1.89A.5.5 0 0 0 7 12V4zM4.312 6.39 6 5.04v5.92L4.312 9.61A.5.5 0 0 0 4 9.5H2v-3h2a.5.5 0 0 0 .312-.11z"/>
+                              </svg>
+                            
+                        </a>
+                    </div>
+                    
+                   
+                    <div id="upcoming_figure_board" class="upcoming-figures__board my-d-none"></div>
+                    
+                    <div class="tetris__info-item score-level-lines">
+                        <div class="score-level-lines__item tetris__info-score score-info">
+                            <h3 class="score-level-lines__title score-info__title">Score</h3>
+                            <p id="score_field" class="score-level-lines__text score-info__text">0</p>
+                        </div>
+
+                        <div class="score-level-lines__item tetris__info-level level-info">
+                            <h3 class="score-level-lines__title level-info__title">Level</h3>
+                            <p id="level_field" class="score-level-lines__text level-info__text">1</p>
+                        </div>
+
+                        <div class="score-level-lines__item tetris__info-lines lines-info">
+                            <h3 class="score-level-lines__title lines-info__title">Lines</h3>
+                            <p id="lines_field" class="score-level-lines__text lines-info__text">0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+       </div>
+    </div>
+    <audio id="tetris_song" src="sounds/tetris-theme-song.mp3"></audio>
+    <audio id="audio_button_up" src="sounds/SFX_ButtonUp.ogg"></audio>
+    <audio id="audio_game_over" src="sounds/SFX_GameOver.ogg"></audio>
+    <audio id="audio_game_start" src="sounds/SFX_GameStart.ogg"></audio>
+    <audio id="audio_figure_rotate" src="sounds/SFX_PieceRotateLR.ogg"></audio>
+    <audio id="audio_figure_rotate_fail" src="sounds/SFX_PieceRotateFail.ogg"></audio>
+    <audio id="audio_level_up" src="sounds/SFX_LevelUp.ogg"></audio>
+    <audio id="audio_figure_locked_up" src="sounds/SFX_PieceLockdown.ogg"></audio>
+    <audio id="audio_figure_touch_down" src="sounds/SFX_PieceTouchDown.ogg"></audio>
+    <audio id="audio_figure_touch_hlr" src="sounds/SFX_PieceTouchLR.ogg"></audio>
+    <audio id="audio_figure_touch_lr" src="sounds/SFX_PieceTouchLR.ogg"></audio>
+    <audio id="audio_figure_fall" src="sounds/SFX_PieceFall.ogg"></audio>
+    <audio id="audio_clear_single" src="sounds/SFX_SpecialLineClearSingle.ogg"></audio>
+    <audio id="audio_clear_double" src="sounds/SFX_SpecialLineClearDouble.ogg"></audio>
+    <audio id="audio_clear_triple" src="sounds/SFX_SpecialLineClearTriple.ogg"></audio>
+    <audio id="audio_figure_move_lr" src="sounds/SFX_PieceMoveLR.ogg"></audio>
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
