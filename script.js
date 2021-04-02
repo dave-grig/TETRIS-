@@ -173,7 +173,6 @@ showUpcomingFigure(figuresShuffled[0]);
 // when click start button
 async function onStart(event) {
     // begin game
-    audioGameStart.play();
     // start music from 3rd second
     audioTetrisTheme.currentTime = 3;
     audioTetrisTheme.play();
@@ -343,7 +342,6 @@ function onRestart(event) {
     // reset delay
     delay = 900;
 
-    audioGameStart.play();
     // add new lifecycle
     tetrisLifeCicle();
     
@@ -377,7 +375,6 @@ function onSoundOff(event) {
     audioClearSingle.muted = true;
     audioClearDouble.muted = true;
     audioClearTriple.muted = true;
-    audioGameStart.muted = true;
     audioGameOver.muted = true;
 }
 
@@ -394,7 +391,6 @@ function onSoundOn(event) {
     audioClearSingle.muted = false;
     audioClearDouble.muted = false;
     audioClearTriple.muted = false;
-    audioGameStart.muted = false;
     audioGameOver.muted = false;
 }
 
