@@ -28,7 +28,7 @@ let scoreCount = 0;
 let id;
 
 // figure drop speed
-let delay = 750;
+let delay = 900;
 
 let soundDisableBtn = document.querySelector("#sound_disable");
 let soundEnableBtn = document.querySelector("#sound_enable")
@@ -173,6 +173,7 @@ showUpcomingFigure(figuresShuffled[0]);
 // when click start button
 async function onStart(event) {
     // begin game
+    audioGameStart.play();
     // start music from 3rd second
     audioTetrisTheme.currentTime = 3;
     audioTetrisTheme.play();
@@ -304,6 +305,7 @@ async function gameOverTimeout (ms) {
         addNewRecord();
         audioTetrisTheme.pause();
         audioTetrisTheme.currentTime = 3;
+        audioGameOver.play();
      }, ms));
 }
 
@@ -338,6 +340,10 @@ function onRestart(event) {
     gameoverMenu.classList.add("my-d-none");
     boardElement.classList.remove("my-d-none");
     
+    // reset delay
+    delay = 900;
+
+    audioGameStart.play();
     // add new lifecycle
     tetrisLifeCicle();
     
@@ -371,6 +377,8 @@ function onSoundOff(event) {
     audioClearSingle.muted = true;
     audioClearDouble.muted = true;
     audioClearTriple.muted = true;
+    audioGameStart.muted = true;
+    audioGameOver.muted = true;
 }
 
 function onSoundOn(event) {
@@ -382,10 +390,12 @@ function onSoundOn(event) {
     audioFigureFall.muted = false;
     audioFigureRotate.muted = false;
     audioFigureRotateFail.muted = false;
-    audioFigureTouchLr.muted = true;
+    audioFigureTouchLr.muted = false;
     audioClearSingle.muted = false;
     audioClearDouble.muted = false;
     audioClearTriple.muted = false;
+    audioGameStart.muted = false;
+    audioGameOver.muted = false;
 }
 
 function initboard(rowsSize, cellsSize) {
@@ -582,11 +592,12 @@ function findCompletedRows(board, visualBoard, currentFigure) {
     linesCount += completedRowsIdx.length;
     lines.innerText = linesCount;
 
-    if (linesCount === 10) {
+    if (linesCount >= 10) {
         levelsCount++;
+        linesCount = 0;
         level.innerText =  levelsCount;
         lines.innerText = "0";
-        delay = delay / (levelsCount + 1);
+        delay -= 100;
     }
 
     if (completedRowsIdx.length === 1) {
@@ -598,7 +609,7 @@ function findCompletedRows(board, visualBoard, currentFigure) {
     } else if (completedRowsIdx.length === 3) {
         scoreCount += levelsCount * 500;
         audioClearTriple.play(); 
-    } else if (completedRowsIdx.lingth === 4) {
+    } else if (completedRowsIdx.length === 4) {
         scoreCount += levelsCount * 800;
         audioClearTriple.play();
     }
