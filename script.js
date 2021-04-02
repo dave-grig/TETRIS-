@@ -934,7 +934,7 @@ function addNewRecord() {
     }
 
     // if is record
-    newRecordBlock.classList.toggle("my-invisible");
+    newRecordBlock.classList.toggle("my-d-none");
     recordNameInput.addEventListener("keypress", onRecordNameEnter);
     
 
@@ -947,7 +947,7 @@ function addNewRecord() {
 
 function onRecordNameEnter(event) {
     if (event.key === "Enter") {
-        newRecordBlock.classList.toggle("my-invisible");
+        newRecordBlock.classList.toggle("my-d-none");
         addRecordToList(event.target.value);
     }
 }
